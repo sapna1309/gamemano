@@ -2,10 +2,12 @@ import { topNavItems } from "@/constants";
 import { Logo } from "./Logo";
 import { SearchBar } from "../custom/SearchBar";
 import { Notification } from "../custom/Notification";
+import { CartIcon } from "../icon/CartIcon";
+import { ProfileIcon } from "../icon/ProfileIcon";
 
 const NavBar = () => {
   return (
-    <nav className="flex border border-black w-full py-6 pr-6 bg-black justify-between">
+    <nav className="flex border z-10 border-black w-full py-8 pr-6 bg-black justify-between top-0 sticky">
       <LeftSide />
       <RightSide />
     </nav>
@@ -30,14 +32,11 @@ const RightSide = () => {
       {/* verticle devider */}
       <div className="border-r-2 border-white border-opacity-30"></div>
       {/* cart icon */}
-      <div className="size-10 cursor-pointer border-2 border-white border-opacity-60 rounded-full flex items-center justify-center">
-        <img src="/icons/cart.png" alt="cart icon for button" />
-      </div>
+      <CartIcon />
       {/* verticle devider */}
       <div className="border-r-2 border-white border-opacity-30"></div>
       {/* profile icon */}
-      <div className="size-10 cursor-pointer border-2 border-white border-opacity-60 rounded-full flex items-center justify-center">
-      </div>
+      <ProfileIcon />
     </div>
   )
 }

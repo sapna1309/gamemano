@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -27,32 +28,6 @@ const config: Config = {
           DEFAULT: "#fff",
           primary: "#DAB785",
           secondary: "#FFE3C1"
-        },
-        product_card: {
-          bg: "#FEF3BC",
-          rating_star: "#E58E27",
-          text: {
-            DEFAULT: "#000",
-            review: "#FF1C1C",
-            main: "#281E1F"
-          },
-          badge: {
-            bg: "#3D352A",
-            text: "#FFFFFF",
-            dot: "#00FF0A"
-          },
-        },
-        text: {
-          DEFAULT: "#FFFFFF"
-        },
-        button: {
-          bg: {
-            DEFAULT: "#E58E27",
-            hover: "#422400",
-          },
-          text: {
-            DEFAULT: "#fff"
-          }
         }
       },
       fontFamily: {
@@ -65,6 +40,42 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [plugin(function ({ addComponents, theme }: any) {
+    addComponents({
+      '.dark-button': {
+        backgroundColor: "#E58E27",
+        borderRadius: "30px",
+        color: "#fff",
+        transition: "background-color 0.3s ease",
+        fontSize: "18px",
+        fontWeight: 600,
+        padding: "15px 40px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: "poppins",
+        '&:hover': {
+          backgroundColor: "#422400",
+        },
+      },
+      '.light-button': {
+        backgroundColor: "#E58E27",
+        borderRadius: "30px",
+        color: "#fff",
+        transition: "background-color 0.3s ease",
+        fontSize: "18px",
+        fontWeight: 600,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "15px 40px",
+        fontFamily: "poppins",
+        '&:hover': {
+          backgroundColor: "#fff",
+          color: "#E58E27"
+        },
+      },
+    })
+  })],
 };
 export default config;
