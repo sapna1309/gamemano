@@ -22,12 +22,14 @@ const config: Config = {
           900: "#E58E27"
         },
         bg: {
-          DEFAULT: "#2B2417"
+          DEFAULT: "#2B2417",
+          brown: "#3D352A"
         },
-        heading_text: {
+        text: {
           DEFAULT: "#fff",
           primary: "#DAB785",
-          secondary: "#FFE3C1"
+          secondary: "#FFE3C1",
+          cardMain: "#281E1F"
         }
       },
       fontFamily: {

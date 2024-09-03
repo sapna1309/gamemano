@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${wallpoet.variable} ${prosto_one.variable} ${aoboshi_one.variable} ${poppins.variable} ${press_start_2p.variable}`}>
+      <body className={`w-[100%] ${wallpoet.variable} ${prosto_one.variable} ${aoboshi_one.variable} ${poppins.variable} ${press_start_2p.variable}`}>
         <NavBar />
         <main>{children}</main>
         <Footer />
