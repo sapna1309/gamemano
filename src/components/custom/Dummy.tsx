@@ -1,81 +1,52 @@
-"use client";
-// import { carouselItems } from "@/constants";
-import { GameCard } from "./GameCard";
-import { useEffect, useRef, useState } from "react";
+"use client"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { carouselResponsive } from "@/constants";
 
 interface Props {
-    autoPlay?: boolean;
-    slidesToShow?: number; // Number of slides to show and scroll at a time
+    data: any[],
+    autoPlay: Boolean
 }
 
-const carouselItems = [
+interface Settings {
+    [key: string]: any
+}
+
+const slides = [
     { id: 1, src: 'https://pixlr.com/images/index/product-image-one.webp', alt: "Slide 1" },
     { id: 2, src: 'https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649', alt: "Slide 2" },
-    { id: 3, src: 'https://pixlr.com/images/index/product-image-one.webp', alt: "Slide 3" },
-    { id: 4, src: 'https://pixlr.com/images/index/product-image-one.webp', alt: "Slide 4" },
-    { id: 5, src: 'https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649', alt: "Slide 5" },
-    { id: 6, src: 'https://pixlr.com/images/index/product-image-one.webp', alt: "Slide 6" }
-]
+    { id: 3, src: 'https://pixlr.com/images/index/product-image-one.webp', alt: "Slide 3" }
+];
 
-const Dummy = ({ autoPlay = true, slidesToShow = 1 }: Props) => {
-    const [current, setCurrent] = useState(0);
-    const timeoutRef = useRef<any>(null);
-    const delay = 3000; // 3 seconds autoplay
+const Dummy = () => {
 
-    const resetTimeout = () => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
-    };
-
-    useEffect(() => {
-        if (autoPlay) {
-            resetTimeout();
-            timeoutRef.current = setTimeout(() => {
-                goToNext();
-            }, delay);
-        }
-        return () => {
-            resetTimeout();
-        };
-    }, [current, autoPlay]);
-
-    const goToNext = () => {
-        setCurrent((prevIndex) => (prevIndex + slidesToShow) % Math.ceil(carouselItems.length / slidesToShow));
-    };
-
-    const goToSlide = (index: number) => {
-        setCurrent(index);
-    };
-
-    const slidesCount = Math.ceil(carouselItems.length / slidesToShow);
+    const settings: Settings = {
+        arrows: false,
+        showDots: true,
+        autoPlay: true,
+        pauseOnHover: true,
+        partialVisibilityGutter: 30,
+        shouldResetAutoplay: true,
+        infinite: true,
+        autoPlaySpeed: 2500,
+    }
 
     return (
-        <div className="relative w-full h-[500px] mx-auto overflow-hidden">
-            {/* Slides Container */}
-            <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{
-                    transform: `translateX(-${current * 100})`,
-                    width: `${100 * slidesCount}%`, // Width based on total number of slides
-                }}
-            >
-                {carouselItems.map((slide, index) => (
-                    <div
-                        key={slide.id}
-                        className="relative"
-                        style={{
-                            minWidth: `100%`, // Width of each slide
-                            width: '200px'
-                        }}
-                    >
-                        <img src={slide.src} alt={slide.alt} className={`transition-opacity duration-500 ease-in-out`}
-                        />
-                    </div>
-                ))}
-            </div>
-        </div >
+        <Carousel {...settings} containerClass="carousel-container" customDot={<CustomDot />} responsive={carouselResponsive}>
+            {slides.map((slide) => <img className="h-[500px] w-full" key={slide.id} src={slide.src} alt={slide.alt} />)}
+        </Carousel>
     );
 };
+
+const CustomDot = ({ onClick, active }: any) => {
+    return (
+        <button
+            onClick={onClick}
+            className={`${active ? "bg-accent-300" : 'bg-white bg-opacity-80'} cursor-pointer rounded-full size-[10px] mx-2`}
+        />
+    );
+};
+
+export default CustomDot;
 
 export { Dummy };

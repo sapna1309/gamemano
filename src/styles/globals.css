@@ -26,6 +26,39 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
+/* Hide the spinners in WebKit browsers */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.carousel-container {
+  border: 0px solid white;
+  padding-bottom: 50px;
+}
+
+.react-multi-carousel-item {
+  transition: opacity 0.2s ease-in-out;
+  transition: blur(500px) 0.5s ease-in-out;
+}
+
+.react-multi-carousel-item.inactive-slide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.react-multi-carousel-item.active-slide {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* .react-multi-carousel-dot-list {
+  background-color: red;
+  border: 1px solid green;
+} */
+
+
 @font-face {
   font-family: 'algerianFont';
   src: url('/fonts/ALGERIA.woff') format('woff');

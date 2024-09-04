@@ -116,6 +116,30 @@ export const responsive = {
     },
 };
 
+export const carouselResponsive = {
+    superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 1024 },
+        items: 1,
+        slidesToSlide: 1,
+    },
+    desktop: {
+        breakpoint: { max: 1024, min: 800 },
+        items: 1,
+        slidesToSlide: 1
+    },
+    tablet: {
+        breakpoint: { max: 800, min: 464 },
+        items: 1,
+        slidesToSlide: 1
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+        slidesToSlide: 1
+    },
+};
+
 export const gameCradItems = [
     {
         id: 1,
@@ -180,5 +204,36 @@ export const footerItems = [
         id: 5,
         name: 'Cookie Preferences',
         path: '/'
+    },
+]
+
+export const platformsFilter = [
+    { name: 'PC', slug: 'pc' },
+    { name: 'PlayStation 5', slug: 'playStation 5' },
+    { name: 'PlayStation 4', slug: 'playStation 4' },
+    { name: 'Xbox Series', slug: 'xbox series' },
+    { name: 'Nintendo Switch', slug: 'nintendo switch' },
+]
+
+export const gameItems = [
+    {
+        id: 1,
+        name: 'Akali',
+        description: "The Rogue Assassin"
+    },
+    {
+        id: 2,
+        name: 'Thresh',
+        description: "The Chain Warden"
+    },
+    {
+        id: 3,
+        name: 'Jinx',
+        description: "The Loose Cannon"
+    },
+    {
+        id: 4,
+        name: 'Yasuo',
+        description: "The Unforgiven"
     },
 ]

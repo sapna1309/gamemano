@@ -1,6 +1,6 @@
 const SearchBar = () => {
     return (
-        <div className="w-80 rounded-full h-10 bg-black border-2 border-white border-opacity-60 overflow-hidden relative flex items-center">
+        <div className="w-80 rounded-full h-10 bg-transparent border-2 border-white border-opacity-60 overflow-hidden relative flex items-center">
             <img src="/icons/search.png" className="size-4 absolute left-3" alt="search icon in input box for search" />
             <input
                 type="text"

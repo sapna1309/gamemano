@@ -20,12 +20,15 @@ const CardSlider = ({ data, autoPlay = false }: Props) => {
         showDots: false,
         autoPlay: autoPlay,
         pauseOnHover: true,
-        partialVisibilityGutter: 30
+        partialVisibilityGutter: 30,
+        shouldResetAutoplay: true,
+        infinite: true,
+        autoPlaySpeed: 2500
     }
 
     return (
         <Carousel {...settings} responsive={responsive}>
-            {data.map((item) => <ProductCard key={item.id} item={item} />)}
+            {data.map((item) => <ProductCard key={item.id} item={item} href={`/products`} mr={4} />)}
         </Carousel>
     );
 };
