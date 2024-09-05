@@ -20,7 +20,7 @@ class Api {
 
     async get<T>(searchParams: SearchParams = {}): Promise<ApiResponse> {
         try {
-            const response: AxiosResponse<T> = await this.instance.get(`/`, { params: searchParams });
+            const response: AxiosResponse<T> = await this.instance.get('/', { params: searchParams });
             return { data: response.data };
         } catch (error: any) {
             return error?.response?.data?.error?.message;
@@ -34,6 +34,19 @@ class Api {
 
         try {
             const response: AxiosResponse<T> = await this.instance.get(`/${id}`, { params: searchParams });
+            return { data: response.data };
+        } catch (error: any) {
+            return error?.response?.data?.error?.message;
+        }
+    }
+
+    async getBySearch<T>(param: string, searchParams: SearchParams = {}): Promise<ApiResponse> {
+        if (!param) {
+            throw new Error("Search not provided");
+        }
+
+        try {
+            const response: AxiosResponse<T> = await this.instance.get(`/${param}`, { params: searchParams });
             return { data: response.data };
         } catch (error: any) {
             return error?.response?.data?.error?.message;

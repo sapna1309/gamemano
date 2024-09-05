@@ -18,7 +18,7 @@ const LeaderBoardIcon = ({ name, path = "/" }: Prop) => {
                     </defs>
                 </svg>
 
-                {name && <p className="group-hover:text-accent-300" >{name}</p>}
+                {name && <p className="group-hover:text-accent-300 text-[18px] font-[400] leading-[27px]" >{name}</p>}
             </div>
         </Link>
     )

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface Props {
     item: { [key: string]: any },
-    href: string,
+    href: any,
     mr: number
 }
 const ProductCard = ({ item, href, mr = 0 }: Props) => {

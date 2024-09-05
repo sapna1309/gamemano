@@ -6,7 +6,7 @@ import { InstagremIcon } from "../icon/InstagramIcon";
 
 const Footer = () => {
     return (
-        <footer className="w-full pb-7 bg-black mt-14">
+        <footer className="w-full pb-7 bg-black bg-opacity-60">
             <div className="w-full py-7 flex gap-10 justify-center items-center border-b-2 border-white border-opacity-30">
                 {footerItems.map((item) => <Link href={item.path} key={item.id}>
                     <p className="text-white hover:text-accent-300 text-opacity-80 text-[18px] font-[500] leading-[27px] font-poppins">{item.name}</p>

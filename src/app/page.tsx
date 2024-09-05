@@ -1,34 +1,46 @@
 import { Product } from "@/apis/models";
-import { CardSlider } from "@/components/custom/CardSlider";
 import { Carousel } from "@/components/custom/Carousel";
 import { GameCard } from "@/components/custom/GameCard";
+import { ProductCard } from "@/components/custom/ProductCard";
 import { RelatedGames } from "@/components/custom/RelatedGames";
 import { SideBar } from "@/components/custom/SideBar";
-import { carouselItems } from "@/constants";
+import { cardSliderResponsive, cardSliderSettings, carouselItems, carouselResponsive, carouselSettings } from "@/constants";
 import Link from "next/link";
 
 export default async function Home() {
   const { data: { products } } = await Product.get();
 
   return (
-    <main className="flex relative w-[100%]">
-      <SideBar />
-      {/* **** Main Content **** */}
-      <div className="w-full bg-black">
-        <div className="pl-[160px] w-full">
+    <div className="w-[100%] bg-black">
+
+      {/* header section */}
+      <div className="flex w-full pt-[110px] bg-black">
+        <SideBar />
+        <div className="w-[92%] pb-8 pl-[55px]">
           {/* **** Header Section **** */}
-          <Carousel autoPlay={true} showDots={true} >
+          <Carousel settings={{ ...carouselSettings, showDots: true, autoPlay: true }} responsive={carouselResponsive}>
             {carouselItems.map((slide) => <GameCard key={slide.id} item={slide} />)}
           </Carousel>
-
         </div>
 
+      </div>
 
+      {/* **** Most Tending Section **** */}
+      <div className="w-full flex relative bg-bg-brown bg-opacity-30">
+        {/* gredient starts */}
+        {/* right side */}
+        <div className="h-[800px] w-[500px] z-0 left-[60%] rotate-45 -top-52 bg-accent-900 bg-opacity-25 absolute blur-[210px] rounded-full"></div>
+        {/* left side */}
+        <div className="h-[700px] w-[400px] z-0 left-0 -top-32 bg-accent-300 bg-opacity-40 absolute blur-[210px] rounded-full"></div>
+        {/* bottom side */}
+        <div className="h-[700px] w-[700px] z-0 left-[30%] -bottom-40 bg-accent-900 bg-opacity-25 absolute blur-[250px] rounded-full"></div>
 
-        {/* **** Most Tending Section **** */}
+        {/* gredient ends */}
 
-        <div className="w-full pl-[135px] mt-10 bg-black bg-opacity-30">
+        {/* border */}
+        <div className="w-[112px] border-r border-r-white border-opacity-30"></div>
 
+        <div className="w-[92%] pl-5  pt-16 pb-[100px]">
           {/* top content heading and arrow */}
           <div className="w-full flex justify-between items-center pr-10">
             {/* heading */}
@@ -47,16 +59,20 @@ export default async function Home() {
 
           {/* card slider */}
           <div className="mt-5">
-            <CardSlider data={products} autoPlay={true} />
+            <Carousel settings={{ ...cardSliderSettings, autoPlay: true }} responsive={cardSliderResponsive}>
+              {products.map((item: any) => <ProductCard key={item.id} item={item} href={`/products`} mr={4} />)}
+            </Carousel>
           </div>
         </div>
-
-        {/* other game cards */}
-        <div className="pl-[135px] mt-10 w-full pr-10 pb-8">
-
-          <RelatedGames />
-        </div>
       </div>
-    </main>
+
+      {/* other game cards */}
+      <div className="w-full bg-bg-brown opacity-70 pb-16">
+
+        <RelatedGames />
+      </div>
+
+    </div>
+
   );
 }

@@ -1,29 +1,14 @@
 "use client"
 import MultiCarousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { carouselResponsive } from "@/constants";
 interface Props {
     [key: string]: any
 }
-interface Settings {
-    [key: string]: any
-}
 
-const Carousel = ({ autoPlay = false, showDots = false, children }: Props) => {
-
-    const settings: Settings = {
-        arrows: false,
-        showDots: showDots,
-        autoPlay: autoPlay,
-        pauseOnHover: true,
-        partialVisibilityGutter: 30,
-        shouldResetAutoplay: true,
-        infinite: true,
-        autoPlaySpeed: 2500,
-    }
+const Carousel = ({ settings, responsive, children }: Props) => {
 
     return (
-        <MultiCarousel {...settings} containerClass={showDots && "carousel-container"} customDot={<CustomDot />} responsive={carouselResponsive}>
+        <MultiCarousel {...settings} containerClass={settings && settings?.showDots && "carousel-container"} customDot={<CustomDot />} responsive={responsive}>
             {children}
         </MultiCarousel>
     );

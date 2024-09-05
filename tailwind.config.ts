@@ -22,7 +22,7 @@ const config: Config = {
           900: "#E58E27"
         },
         bg: {
-          DEFAULT: "#2B2417",
+          DEFAULT: "#281E1F",
           brown: "#3D352A"
         },
         text: {

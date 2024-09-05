@@ -1,5 +1,6 @@
 "use client";
 
+import { carouselResponsive, carouselSettings } from "@/constants";
 import { Carousel } from "./Carousel";
 
 interface Props {
@@ -17,10 +18,8 @@ const SingleProductCard = ({ data }: Props) => {
         event.target.src = data?.thumbnail; // Fallback image
     };
 
-    console.log({ data });
-
     return (
-        <div style={{ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' }} className="h-[530px] bg-bg-brown bg-opacity-30 flex justify-center relative">
+        <div style={{ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' }} className="h-[530px] bg-bg-brown bg-opacity-30 flex justify-center relative z-[9]">
             {/* back icon */}
             <img src="/icons/back.png" alt=" back icon for navigating back" className="absolute top-12 cursor-pointer left-14" onClick={handleBack} />
 
@@ -45,7 +44,7 @@ const SingleProductCard = ({ data }: Props) => {
 
                 {/* image carousel */}
                 <div className="w-full -mt-12">
-                    <Carousel autoPlay={true}>
+                    <Carousel settins={{ ...carouselSettings, autoPlay: true }} responsive={carouselResponsive}>
                         {data?.images?.map((image: string) => <img key={image}
                             src={image}
                             onError={(e) => handleError(e)}
