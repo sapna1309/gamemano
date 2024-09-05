@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Logo } from "../global";
 
 const SideBar = () => {
-    const [isOpen, setIsOpen]: any = useState('')
+    const [isOpen, setIsOpen]: any = useState('null')
 
 
     return (
