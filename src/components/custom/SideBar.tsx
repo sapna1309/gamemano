@@ -37,7 +37,7 @@ const NavItems = () => {
 
 const NavItemsWithName = ({ isOpen }: { isOpen: string }) => {
     return (
-        <div className={`fixed bottom-0 top-0 left-0 bg-bg-brown bg-opacity-80 py-10 z-10 ${isOpen === 'open' ? 'backdrop-blur-md transition-all duration-400 ease-in slide-right' : isOpen === 'close' ? 'backdrop-blur-none transition-all duration-[3000ms] ease-in slide-left' : 'backdrop-blur-none -left-[300px]'}`}>
+        <div className={`fixed bottom-0 top-0 left-0 bg-bg-brown bg-opacity-80 py-10 z-10 ${isOpen === 'open' ? 'backdrop-blur-md transition-all duration-400 ease-in slide-right' : isOpen === 'close' ? 'backdrop-blur-none transition-all duration-[3000ms] ease-in slide-left' : 'backdrop-blur-none hidden'}`}>
             <div className="pl-5 pr-4">
                 <Logo type={'full'} />
             </div>
